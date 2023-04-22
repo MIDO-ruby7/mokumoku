@@ -2,6 +2,10 @@
   <%#= render 'shared/error_messages', object: f.object %>
   <div class="mb-3">
     <%= f.label :title %>
+    <%= f.check_box :title, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="mb-3">
