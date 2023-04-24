@@ -31,13 +31,9 @@
               <%= f.label :password_confirmation %>
               <%= f.password_field :password_confirmation, class: 'form-control' %>
             </div>
-            <div class="mb-3">
-              <%= f.radio_button :gender, User.genders.key(0) %>
-              <%= f.label :gender, User.genders_i18n.values.first %>
-              <%= f.radio_button :gender, User.genders.key(1) %>
-              <%= f.label :gender, User.genders_i18n.values.second %>
-              <%= f.radio_button :gender, User.genders.key(2) %>
-              <%= f.label :gender, User.genders_i18n.values.third %>
+            <div class="mb-3"  name="Gender">
+              <%= f.label :Gender %>
+              <%= f.select :gender, User.genders_i18n.invert, {}, { class: 'form-control mr-1', id: 'Gender'} %>
             </div>
             <div class="mb-3">
               <div class="form-check">
