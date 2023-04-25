@@ -104,7 +104,7 @@
                               method: :post,
                               data: { confirm: '申し込みます' }
                   %>
-                  <% else current_user.man? && current_user.other?  && events.only_woman? %>
+                <% else @current_user_man_or_other %>
                   <%= 'このイベントには申し込みできません' %>
                 <% end %>
               <% end %>
