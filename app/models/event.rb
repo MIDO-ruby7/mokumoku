@@ -28,7 +28,9 @@ class Event < ApplicationRecord
     !past?
   end
 
-  def non_woman_can_not_join?(current_user)
-    current_user.man? || current_user.other? && only_woman?
+  # ログインユーザーが"男性"又は"その他"の場合、女性限定イベントに参加できないこと
+  def non_woman_cannot_join?(current_user)
+    non_woman = current_user.man? || current_user.other?
+    non_woman && only_woman?
   end
 end
