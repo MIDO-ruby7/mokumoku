@@ -42,6 +42,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @current_user_man_or_other = @event.non_woman_cannot_join?(current_user)
   end
 
   def edit
@@ -60,6 +61,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail)
+    params.require(:event).permit(:title, :content, :held_at, :prefecture_id, :thumbnail, :only_woman)
   end
 end

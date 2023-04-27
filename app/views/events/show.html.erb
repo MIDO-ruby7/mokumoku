@@ -23,6 +23,11 @@
                     <% end %>
                   </span>
                 <% end %>
+                <% if @event.only_woman? %>
+                  <div class="d-flex align-items-center gap-3">
+                    <%= '女性限定' %>
+                  </div>
+                <% end %>
                 <span id="js-event-bookmark-<%= @event.id %>">
                   <% if current_user.bookmarked?(@event) %>
                     <%= render 'events/bookmarks/unbookmark', event: @event %>
@@ -92,13 +97,15 @@
                               method: :delete,
                               data: { confirm: 'キャンセルします' }
                   %>
-                <% else %>
+                <% elsif current_user.woman? %>
                   <%= link_to 'このもくもく会に参加する',
                               event_attendance_url(@event),
                               class: 'btn btn-primary',
                               method: :post,
                               data: { confirm: '申し込みます' }
                   %>
+                <% else @current_user_man_or_other %>
+                  <%= 'このイベントには申し込みできません' %>
                 <% end %>
               <% end %>
             <% end %>
