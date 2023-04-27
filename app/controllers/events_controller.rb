@@ -42,7 +42,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @current_user_man_or_other = @event.man_or_other?(current_user)
+    @current_user_man_or_other = @event.non_woman_can_not_join?
   end
 
   def edit

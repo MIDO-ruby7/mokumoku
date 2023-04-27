@@ -28,7 +28,7 @@ class Event < ApplicationRecord
     !past?
   end
 
-  def man_or_other?(current_user)
+  def non_woman_can_not_join?(current_user)
     current_user.man? || current_user.other? && only_woman?
   end
 end
